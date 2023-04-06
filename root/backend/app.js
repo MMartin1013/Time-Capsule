@@ -46,4 +46,4 @@ app.use(function(err, req, res, next) {
 const fireApp = initializeApp(firebaseConfig);
 const database = getFirestore(fireApp);
 
-module.exports = app;
+module.exports = { app, database };
