@@ -3,16 +3,12 @@ const router = express.Router();
 const database = require('../database');
 const { collection, doc, getDoc, setDoc } = require('firebase/firestore');
 
-router.get('/', (req, res, next) => {
-  res.status(200).send(`Reached ${req.originalUrl} with request: ${req.body} `); 
-});
-
 /* GET user and check if password matches */
 router.get('/:username/:password/', async (req, res, next) => {
   const {username, password} = req.params;
   const user = await getUser(database, username);
   
-  if(user && user.password == password) {
+  if(user && user.password === password) {
     res.status(200).send('User found!');
   }else {
     res.status(404).send('User not found.');
@@ -36,7 +32,7 @@ router.post('/:username/:password/', async (req, res, next) => {
     }catch(e) {
       res.status(400).send('Could not communicate with database');
     }
-
+    
     res.status(200).send('User has been added');
   }
 });
