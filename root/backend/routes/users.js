@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const database = require('../database');
-const { collection, getDoc, doc } = require('firebase/firestore');
+const { collection, doc, getDoc, setDoc } = require('firebase/firestore');
 
 router.get('/', (req, res, next) => {
   res.status(200).send(`Reached ${req.originalUrl} with request: ${req.body} `); 
@@ -11,10 +11,33 @@ router.get('/', (req, res, next) => {
 router.get('/:username/:password/', async (req, res, next) => {
   const {username, password} = req.params;
   const user = await getUser(database, username);
+  
   if(user && user.password == password) {
-    res.sendStatus(200);
+    res.status(200).send('User found!');
   }else {
-    res.sendStatus(404);
+    res.status(404).send('User not found.');
+  }
+});
+
+
+/* POST user and password if user does not exist*/
+router.post('/:username/:password/', async (req, res, next) => {
+  const {username, password} = req.params;
+  const user = await getUser(database, username);
+  
+  if(user) {
+    res.status(400).send('Username already exists');
+  }else {
+    try {
+      await setDoc(doc(database, 'users', username), {
+        username: username,
+        password: password,
+      });
+    }catch(e) {
+      res.status(400).send('Could not communicate with database');
+    }
+
+    res.status(200).send('User has been added');
   }
 });
 
