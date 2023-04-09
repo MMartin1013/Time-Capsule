@@ -1,7 +1,3 @@
-const { initializeApp } = require('firebase/app');
-const { getFirestore } = require('firebase/firestore');
-const firebaseConfig = require('./config');
-
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -42,8 +38,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-//connecting firebase
-const fireApp = initializeApp(firebaseConfig);
-const database = getFirestore(fireApp);
-
-module.exports = { app, database };
+module.exports = app;
