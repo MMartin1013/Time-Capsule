@@ -26,11 +26,11 @@ const router = createBrowserRouter([
     path: "/login",
     element: <LoginPage/>,
   },
-  {
-    /* Login page route where we will return login component */
-    path: "/message",
-    element: <MessagePage/>,
-  },
+  // {
+  //   /* Login page route where we will return login component */
+  //   path: "/message",
+  //   element: <MessagePage/>,
+  // },
 ]);
 
 function App() {
