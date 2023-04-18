@@ -1,14 +1,27 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import logo from '../../src/logoTC.png';
+import axios from 'axios';
 
 function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const navigate = useNavigate();
+
   const handleLogin = () => {
-    // handle login logic here
-    console.log(`Logging in with username: ${username} and password: ${password}`);
+    // make HTTP request to server to check login credentials
+    axios.post('http://localhost:3001/users/$username/$password', { username, password })
+      .then((response) => {
+        console.log('Login successful');
+        // redirect user to home page or dashboard on successful login
+        navigate('/home');
+      })
+      .catch((error) => {
+        console.error('Login failed', error);
+        // display error message to user
+      });
   };
 
   return (

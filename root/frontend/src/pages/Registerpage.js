@@ -1,17 +1,27 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import logo from '../../src/logoTC.png';
-
+import axios from 'axios';
 
 function RegisterPage() {
   const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
 
   const handleRegister = () => {
     // handle register logic here
-    console.log(`Registering with username: ${username}, email: ${email}, and password: ${password}`);
-    //axios.get()
-    //axios.post("http://localhost3001/username/password");
+    console.log(`Registering with username: ${username} and password: ${password}`);
+    axios.post(`http://localhost:3001/users/${username}/${password}`)
+      .then(response => {
+        console.log('Registration successful:', response.data);
+        // redirect to the login page or show a success message
+        navigate('/login');
+      })
+      .catch(error => {
+        console.error('Registration failed:', error);
+        // show an error message to the user
+      });
   };
 
   return (
@@ -26,10 +36,6 @@ function RegisterPage() {
             Username:
           </label>
           <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} style={{ marginBottom: '10px' }} />
-          <label style={{ marginBottom: '10px' }}>
-            Email:
-          </label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} style={{ marginBottom: '10px' }} />
           <label style={{ marginBottom: '10px' }}>
             Password:
           </label>
