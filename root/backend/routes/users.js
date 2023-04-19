@@ -4,8 +4,8 @@ const database = require('../database');
 const { collection, doc, getDoc, setDoc } = require('firebase/firestore');
 
 /* GET user and check if password matches */
-router.get('/:username/:password/', async (req, res, next) => {
-  const {username, password} = req.params;
+router.get('/', async (req, res, next) => {
+  const {username, password} = req.body;
   const user = await getUser(database, username);
   
   if(user && user.password === password) {
@@ -17,8 +17,8 @@ router.get('/:username/:password/', async (req, res, next) => {
 
 
 /* POST user and password if user does not exist*/
-router.post('/:username/:password/', async (req, res, next) => {
-  const {username, password} = req.params;
+router.post('/', async (req, res, next) => {
+  const {username, password} = req.body;
   const user = await getUser(database, username);
   
   if(user) {
@@ -36,7 +36,6 @@ router.post('/:username/:password/', async (req, res, next) => {
     res.status(200).send('User has been added');
   }
 });
-
 
 /* Retrieves user from the database */
 const getUser = async (db, username) => {
