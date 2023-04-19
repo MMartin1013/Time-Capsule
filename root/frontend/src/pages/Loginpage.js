@@ -18,7 +18,7 @@ function LoginPage() {
       });
     
     const config = {
-      method: 'post',
+      method: 'get',
       maxBodyLength: Infinity,
       url: 'http://localhost:3001/users/',
       headers: {
@@ -52,7 +52,10 @@ function LoginPage() {
           <label style={{ marginBottom: '10px' }}>
             Username:
           </label>
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} style={{ marginBottom: '10px' }} />
+          <input type="text" value={username} onChange={(e) => {
+            setUsername(e.target.value) 
+            console.log(username)}
+          } style={{ marginBottom: '10px' }} />
           <label style={{ marginBottom: '10px' }}>
             Password:
           </label>
