@@ -11,16 +11,39 @@ function RegisterPage() {
 
   const handleRegister = () => {
     // handle register logic here
-    console.log(`Registering with username: ${username} and password: ${password}`);
-    axios.post(`http://localhost:3001/users/${username}/${password}`)
-      .then(response => {
-        console.log('Registration successful:', response.data);
-        // redirect to the login page or show a success message
-        navigate('/login');
+    // console.log(`Registering with username: ${username} and password: ${password}`);
+    // axios.post(`http://localhost:3001/users/${username}/${password}`)
+    //   .then(response => {
+    //     console.log('Registration successful:', response.data);
+    //     // redirect to the login page or show a success message
+    //     navigate('/login');
+    //   })
+    //   .catch(error => {
+    //     console.error('Registration failed:', error);
+    //     // show an error message to the user
+    //   });
+    const data = JSON.stringify({
+      "username": username,
+      "password": password
+    });
+
+    const config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: 'http://localhost:3001/users/',
+      headers: {
+      'Content-Type': 'application/json'
+      },
+      data : data
+    };
+
+    axios.request(config)
+      .then((response) => {
+      console.log(JSON.stringify(response.data));
+      navigate('/login');
       })
-      .catch(error => {
-        console.error('Registration failed:', error);
-        // show an error message to the user
+      .catch((error) => {
+      console.log(error);
       });
   };
 

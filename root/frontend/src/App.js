@@ -1,9 +1,8 @@
-import logo from "./logo.svg";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import RegisterPage from "./pages/Registerpage";
 import LoginPage from "./pages/Loginpage";
-import MessagePage from "./pages/MessagePage";
+// import MessagePage from "./pages/MessagePage";
 import "./css/App.css";
 
 const router = createBrowserRouter([

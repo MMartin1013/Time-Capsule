@@ -12,18 +12,35 @@ function LoginPage() {
 
   const handleLogin = () => {
     // make HTTP request to server to check login credentials
-    axios.post('http://localhost:3001/users/$username/$password', { username, password })
+      const data = JSON.stringify({
+        "username": username,
+        "password": password
+      });
+    
+    const config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: 'http://localhost:3001/users/',
+      headers: {
+      'Content-Type': 'application/json'
+      },
+      data : data
+    };
+
+    axios.request(config)
       .then((response) => {
         console.log('Login successful');
+        console.log(JSON.stringify(response.data));
         // redirect user to home page or dashboard on successful login
         navigate('/home');
       })
       .catch((error) => {
-        console.error('Login failed', error);
-        // display error message to user
+      //display error message to user
+      console.error('Login failed', error);
+      console.log(error);
       });
   };
-
+  
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
       <div style={{ width: '400px', justifyContent: 'center', alignItems: 'center' }}>
