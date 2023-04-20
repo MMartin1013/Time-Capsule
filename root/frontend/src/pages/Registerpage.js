@@ -11,17 +11,6 @@ function RegisterPage() {
 
   const handleRegister = () => {
     // handle register logic here
-    // console.log(`Registering with username: ${username} and password: ${password}`);
-    // axios.post(`http://localhost:3001/users/${username}/${password}`)
-    //   .then(response => {
-    //     console.log('Registration successful:', response.data);
-    //     // redirect to the login page or show a success message
-    //     navigate('/login');
-    //   })
-    //   .catch(error => {
-    //     console.error('Registration failed:', error);
-    //     // show an error message to the user
-    //   });
     const data = JSON.stringify({
       "username": username,
       "password": password
@@ -39,11 +28,15 @@ function RegisterPage() {
 
     axios.request(config)
       .then((response) => {
-      console.log(JSON.stringify(response.data));
-      navigate('/login');
+        console.log('Registration successful:', response.data);
+        console.log(JSON.stringify(response.data));
+        // redirect to the login page or show a success message
+        navigate('/login');
       })
       .catch((error) => {
-      console.log(error);
+        // show an error message to the user
+        console.error('Registration failed:', error);
+        console.log(error);
       });
   };
 

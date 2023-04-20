@@ -5,7 +5,7 @@ const { collection, doc, getDoc, setDoc } = require('firebase/firestore');
 
 /* GET user and check if password matches */
 router.get('/', async (req, res, next) => {
-  const {username, password} = req.body;
+  const {username, password} = req.query;
   const user = await getUser(database, username);
   
   if(user && user.password === password) {
