@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const database = require('../database');
-const { collection, doc, getDoc, setDoc } = require('firebase/firestore');
+const { doc, setDoc } = require('firebase/firestore');
+const { getUser } = require('../utils/firebaseUtils');
 
 /* GET user and check if password matches */
 router.get('/', async (req, res, next) => {
@@ -36,15 +37,5 @@ router.post('/', async (req, res, next) => {
     res.status(200).send('User has been added');
   }
 });
-
-/* Retrieves user from the database */
-const getUser = async (db, username) => {
-  const usersRef = collection(db, 'users');
-  const userDoc = doc(usersRef, username);
-  const userSnapshot = await getDoc(userDoc);
-  const user = userSnapshot.data();
-    
-  return user;
-}
 
 module.exports = router;
