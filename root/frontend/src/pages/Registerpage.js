@@ -31,7 +31,7 @@ function RegisterPage() {
   const [confirmPassword, setConfirmPassword] = useState('')
   const navigate = useNavigate();
   const disclaimer = () => { alert( `
-                                  TERMS OF SERVICE
+                              *** TERMS OF SERVICE ***
   THE USE OF ANY ASPECT OF TIME CAPSULE IS AT YOUR
     OWN RISK THE MATERIAL PRESENTED THROUGH THE
          USE OF THIS APPLICATION IS INTENDED FOR
@@ -65,7 +65,8 @@ function RegisterPage() {
     //   });
 
     if (password !== confirmPassword) {
-      alert("Passwords don't match.")
+      alert(`                                          **  ERROR  **
+                             PASSWORDS DO NOT MATCH`)
       return
     }
 
@@ -95,7 +96,7 @@ function RegisterPage() {
   };
 
   return (
-    <Splashr splash={splash1} transitionTime={600} minDelay={500}>
+    <Splashr splash={splash1} transitionTime={1000} minDelay={500}>
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: "#8eecec" }}>
       <div style={{ alignItems: 'center' }}>
       <h1 style={{justifyContent: 'center', paddingLeft: 300,width: 800, fontSize: 80 ,fontWeight: "bold" }}>Time Capsule</h1>
@@ -109,7 +110,7 @@ function RegisterPage() {
           
           <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} style={{ borderRadius: 5,fontSize:20, textAlign: 'center', height: 30, width: 250, marginBottom: '10px'}} />
 
-          <input type="text" placeholder='Confirm Password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} style={{ borderRadius: 5,fontSize:20, textAlign: 'center', height: 30, width: 250, marginBottom: '10px'}} />
+          <input type="password" placeholder='Confirm Password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} style={{ borderRadius: 5,fontSize:20, textAlign: 'center', height: 30, width: 250, marginBottom: '10px'}} />
           <br />
           <button onClick={handleRegister} style={{fontSize: 15, borderRadius: 5, height: 30, width: 150, fontWeight: 'bold' , marginTop: '10px' }}>Submit</button>
         </div>

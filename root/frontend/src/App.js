@@ -3,17 +3,18 @@ import Homepage from "./pages/Homepage";
 import RegisterPage from "./pages/Registerpage";
 import LoginPage from "./pages/Loginpage";
 import MessagePage from "./pages/Messagepage"
+import SplashLoginpage from "./pages/SplashLoginpage"
 import "./css/App.css";
 
 const router = createBrowserRouter([
   
+  // {
+  //   /* Home page route where we will return hompage component */
+  //   path: "/",
+  //   element: <SplashLoginpage/>,
+  // },
   {
-    /* Home page route where we will return hompage component */
     path: "/",
-    element: <LoginPage/>,
-  },
-  {
-    path: "/home",
     element: <Homepage/>,
   },
   {

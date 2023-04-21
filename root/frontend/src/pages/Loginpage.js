@@ -16,26 +16,12 @@ const splash1 = <div class= "splash-screen1">
           position: 'absolute',
           backgroundColor: "#8eecec" }}
     >
-    
-    <img style={{paddingBottom: 115}}src={logo1} alt="Logo" />
+    <h1 style={{ paddingTop: 22, paddingLeft: 300,width: 800, fontSize: 80 ,fontWeight: "bold" }}>Time Capsule</h1>
+    <img style={{paddingLeft: 472, paddingBottom: 390}}src={logo1} alt="Logo" />
             
   </div>
 </div>
 
-const splash2 = <div class= "splash-screen2">
-  <div className = 'Logo' 
-  style={{ display: 'grid', 
-          justifyContent: 'center', 
-          width: '100%', 
-          height: '100%',
-          
-          backgroundColor: "#8eecec" }}
-    >
-    <h1 style={{ fontSize: 30 , fontWeight: "bold" , paddingTop: 175, fontStyle: 'italic'}}>"Connect To A Future You"</h1>
-    <img style={{paddingBottom: 695, paddingLeft: 110}}src={logo1} alt="Logo" />
-            
-  </div>
-</div>
 
 
 function LoginPage() {
@@ -76,13 +62,11 @@ function LoginPage() {
   };
   
   return (
-    <Splashr splash={splash1} transitionTime={10000}>
+    <Splashr splash={splash1} transitionTime={1000} minDelay={500}>
       
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh',  backgroundColor: "#8eecec" }}>
       <div style={{ alignItems: 'center' }}>
-      <Splashr splash={splash2} minDelay={7000} transitionTime={2500}>
       <h1 style={{ paddingLeft: 300,width: 800, fontSize: 80 ,fontWeight: "bold" }}>Time Capsule</h1>
-      </Splashr>
         <div className = 'Logo' style={{ zIndex: 5, display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '20px' }}>
           <img style={{paddingBottom: 40}}src={logo2} alt="Logo" />
         </div>
@@ -93,7 +77,7 @@ function LoginPage() {
           <br />
           <button onClick={handleLogin} style={{fontSize: 15,borderRadius: 5, height: 30, width: 150, fontWeight: 'bold' }}>Submit</button>
         </div>
-        <p style={{ fontWeight: 'bold', textAlign: 'center', marginTop: '20px' }}>Don't have an account?  <Link to="/register" style={{ fontWeight: 'bold', textDecoration: 'underline', color: 'blue' }}>Create Account</Link></p>
+        <p style={{paddingBottom: 55, fontWeight: 'bold', textAlign: 'center', marginTop: '20px' }}>Don't have an account?  <Link to="/register" style={{ fontWeight: 'bold', textDecoration: 'underline', color: 'blue' }}>Create Account</Link></p>
         
       </div>
     </div>
