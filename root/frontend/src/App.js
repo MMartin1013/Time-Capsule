@@ -8,13 +8,13 @@ import "./css/App.css";
 
 const router = createBrowserRouter([
   
-  // {
-  //   /* Home page route where we will return hompage component */
-  //   path: "/",
-  //   element: <SplashLoginpage/>,
-  // },
   {
+    /* Home page route where we will return hompage component */
     path: "/",
+    element: <SplashLoginpage/>,
+  },
+  {
+    path: "/home",
     element: <Homepage/>,
   },
   {
