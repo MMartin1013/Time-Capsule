@@ -91,9 +91,9 @@ function LoginPage() {
           <input type="text" placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)} style={{ borderRadius: 5,fontSize:20, textAlign: 'center', height: 30, width: 250,marginBottom: '10px' }} />
           <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} style={{ borderRadius: 5,fontSize:20, textAlign: 'center', height: 30, width: 250, marginBottom: '10px' }} />
           <br />
-          <button onClick={handleLogin} style={{fontSize: 15,borderRadius: 5, height: 30, width: 100, fontWeight: 'bold' }}>Submit</button>
+          <button onClick={handleLogin} style={{fontSize: 15,borderRadius: 5, height: 30, width: 150, fontWeight: 'bold' }}>Submit</button>
         </div>
-        <p style={{ textAlign: 'center', marginTop: '20px' }}>Don't have an account?  <Link to="/register" style={{ textDecoration: 'underline', color: 'blue' }}>Create Account</Link></p>
+        <p style={{ fontWeight: 'bold', textAlign: 'center', marginTop: '20px' }}>Don't have an account?  <Link to="/register" style={{ fontWeight: 'bold', textDecoration: 'underline', color: 'blue' }}>Create Account</Link></p>
         
       </div>
     </div>
