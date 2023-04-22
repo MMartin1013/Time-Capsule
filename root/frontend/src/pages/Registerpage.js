@@ -6,6 +6,7 @@ import axios from 'axios';
 function RegisterPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const navigate = useNavigate();
 
@@ -36,7 +37,7 @@ function RegisterPage() {
       .catch((error) => {
         // show an error message to the user
         console.error('Registration failed:', error);
-        console.log(error);
+        setErrorMessage('Username already exists.');
       });
   };
 
@@ -44,9 +45,10 @@ function RegisterPage() {
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
       <div style={{ width: '400px', justifyContent: 'center', alignItems: 'center' }}>
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '20px' }}>
-            <img src={logo} alt="Logo" />
+          <img src={logo} alt="Logo" />
         </div>
         <h1 style={{ textAlign: 'center', fontFamily: 'Lobster Two', fontStyle: 'italic' }}>Create Account</h1>
+        {errorMessage && <p style={{ color: 'red', marginTop: '10px', textAlign: 'center' }}>{errorMessage}</p>}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <label style={{ marginBottom: '10px' }}>
             Username:

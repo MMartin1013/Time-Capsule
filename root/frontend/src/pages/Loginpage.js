@@ -7,6 +7,7 @@ import axios from 'axios';
 function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const navigate = useNavigate();
 
@@ -36,11 +37,10 @@ function LoginPage() {
         navigate('/home');
       })
       .catch((error) => {
-      //display error message to user
-      console.error('Login failed', error);
-      console.log(error);
+        // show an error message to the user
+        console.error('Login failed', error);
+        setErrorMessage('Incorrect username or password.');
       });
-      
   };
   
   return (
@@ -50,6 +50,7 @@ function LoginPage() {
           <img src={logo} alt="Logo" />
         </div>
         <h1 style={{ textAlign: 'center', fontFamily: 'Lobster Two', fontStyle: 'italic' }}>Log In</h1>
+        {errorMessage && <p style={{ color: 'red', textAlign: 'center' }}>{errorMessage}</p>}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <label style={{ marginBottom: '10px' }}>
             Username:
