@@ -50,9 +50,9 @@ const splash1 = <div class= "splash-screen1">
 //   );
 // };
 
-export const Homepage = () => {
+export const Messagepage = () => {
 
-    const [message, setMessage] = useState('');
+    const [message, setMessage] = useState({message: ''});
     const [date, setDate] = useState(new Date());
     const [time, setTime] = useState(new Date());
     const [open, setOpen] = React.useState(false);
@@ -63,32 +63,35 @@ export const Homepage = () => {
     const handleOpen = () => {
       setOpen(!open);
     };
+
+    
   
     const handleMenuSubmit = () => {
-      // do something
-      setMessage(message.target.value);
-      const message = JSON.stringify({
-        "message": message, 
-      });
-      const config = {
-        method: 'post',
-        maxBodyLength: Infinity,
-        url: 'http://localhost:3001/users/',
-        headers: {
-        'Content-Type': 'application/json'
-        },
-        message : message
-      };
-  
-      axios.request(config)
-        .then((response) => {
-        console.log(JSON.stringify(response.message));
-        alert(`Message Saved For Redelivery On : `);
-        })
-        .catch((error) => {
-        console.log(error);
+      // make HTTP request to server to check login credentials
+        
+        const data = JSON.stringify({
+          "message": message,
         });
-    };
+    
+        const config = {
+          method: 'post',
+          maxBodyLength: Infinity,
+          url: 'http://localhost:3001/users/',
+          headers: {
+          'Content-Type': 'application/json'
+          },
+          data : data
+        };
+    
+        axios.request(config)
+          .then((response) => {
+          console.log(JSON.stringify(response.data));
+          alert(`It Worked!`);
+          })
+          .catch((error) => {
+          console.log(error);
+          });
+      };
 
   
     const handleMenuCalendar = () => {
@@ -114,10 +117,10 @@ export const Homepage = () => {
         );
     };
 
-    const handleTextChange = () => {
-
-      return
-    }
+    const handleChange = (e) => {
+        setMessage({[e.target.name]: e.target.value});
+        
+    };
       
     // const handleDateChange = (e) => {
     //   setDate(date);
@@ -146,7 +149,7 @@ export const Homepage = () => {
           
         <div style={{paddingBottom: 100, display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: "#8eecec" }}>
         
-          <textarea type="text" value={message} onChange={handleTextChange} placeholder='Start Typing...'
+          <textarea type="text" value={message} onChange={(e) => setMessage(e.target.value)} placeholder='Start Typing...'
                    placeholderTextColor="#aaaaaa" rows="25" style={{ marginBottom: '10px' ,height: 200, width: 400,
         borderRadius: 5,
         overflow: 'hidden',
@@ -157,12 +160,12 @@ export const Homepage = () => {
         marginRight: 30,
         fontSize: '20px',
         
-       }} />
+       }}  />
         <button onClick={handleOpen} style={{overflowY: 'scroll', fontSize: 15,borderRadius: 5, height: 30, width: 150, fontWeight: 'bold'}}>Select Option </button>
       {open ? (
         <ul className="menu" style={{ overflowY: 'scroll', overflow: 'hidden', cursor: 'pointer', paddingRight: '3%'}}>
           <li className="menu-Submit">
-            <button value={message} onClick={handleMenuSubmit} style={{fontSize: 15,borderRadius: 5, height: 30, width: 150, fontWeight: 'bold', display: 'block'}}>Submit Message</button>
+            <button onClick={handleMenuSubmit} style={{fontSize: 15,borderRadius: 5, height: 30, width: 150, fontWeight: 'bold', display: 'block'}}>Submit Message</button>
           </li>
           <li className="menu-Calendar">
             <button onClick={handleMenuCalendar} style={{fontSize: 15,borderRadius: 5, height: 30, width: 150, fontWeight: 'bold', display: 'block' }}>Calendar</button>
@@ -183,4 +186,4 @@ export const Homepage = () => {
   );
 }
 
-export default Homepage;
+export default Messagepage;

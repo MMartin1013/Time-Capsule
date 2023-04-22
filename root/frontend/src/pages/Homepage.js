@@ -26,7 +26,7 @@ const splash1 = <div class= "splash-screen1">
 
 
 
-function LoginPage() {
+function HomePage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -97,4 +97,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default HomePage;
