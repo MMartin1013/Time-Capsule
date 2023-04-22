@@ -2,14 +2,16 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import RegisterPage from "./pages/Registerpage";
 import LoginPage from "./pages/Loginpage";
-// import MessagePage from "./pages/MessagePage";
+import MessagePage from "./pages/Messagepage"
+import SplashLoginpage from "./pages/SplashLoginpage"
 import "./css/App.css";
 
 const router = createBrowserRouter([
+  
   {
     /* Home page route where we will return hompage component */
     path: "/",
-    element: <Homepage/>,
+    element: <SplashLoginpage/>,
   },
   {
     path: "/home",
@@ -25,11 +27,11 @@ const router = createBrowserRouter([
     path: "/login",
     element: <LoginPage/>,
   },
-  // {
-  //   /* Login page route where we will return login component */
-  //   path: "/message",
-  //   element: <MessagePage/>,
-  // },
+  {
+    /* Login page route where we will return login component */
+    path: "/message",
+    element: <MessagePage/>,
+  },
 ]);
 
 function App() {
