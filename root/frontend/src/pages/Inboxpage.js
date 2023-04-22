@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import {useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import logo2 from '../../src/logoTC.png'
 import axios from 'axios';
