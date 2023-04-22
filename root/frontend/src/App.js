@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Homepage from "./pages/Homepage";
+import Inboxpage from "./pages/Inboxpage";
 import RegisterPage from "./pages/Registerpage";
 import LoginPage from "./pages/Loginpage";
 import MessagePage from "./pages/Messagepage"
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
   },
   {
     path: ":username/home",
-    element: <Homepage/>,
+    element: <Inboxpage/>,
   },
   {
     /* Register page route where we will return register component */
