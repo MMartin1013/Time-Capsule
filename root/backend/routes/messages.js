@@ -23,16 +23,16 @@ router.get('/:username', async (req, res, next) => {
   
     const validMessages = [];
     messages.forEach((doc) => {
-    const {title, text, deliver_date} = doc.data();
-   
-    if(deliver_date <= Timestamp.now()) {
-      const message = {
-        title: title,
-        text: text,
+      const {title, text, deliver_date} = doc.data();
+    
+      if(deliver_date <= Timestamp.now()) {
+        const message = {
+          title: title,
+          text: text,
+        }
+    
+        validMessages.push(message);
       }
-  
-      validMessages.push(message);
-    }
    })
    res.status(200).send(validMessages);
   }
@@ -53,7 +53,7 @@ router.post('/:username', async (req, res, next) => {
           res.status(400).send('Could not communicate with database');
       }
 
-      const temp_date = new Date(Date.parse(date));
+      const temp_date = new Date(parseInt(date));
       const deliver_date = Timestamp.fromDate(temp_date);
 
       if(!deliver_date) {
