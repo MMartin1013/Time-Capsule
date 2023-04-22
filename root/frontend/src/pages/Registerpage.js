@@ -30,6 +30,7 @@ function RegisterPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
   const disclaimer = () => { alert( `
                               *** TERMS OF SERVICE ***
@@ -93,6 +94,7 @@ function RegisterPage() {
       })
       .catch((error) => {
       console.log(error);
+      setErrorMessage("User Already Exists!")
       });
   };
 
@@ -105,6 +107,7 @@ function RegisterPage() {
             <img src={logo} alt="Logo" />
         </div>
         <h1 style={{paddingBottom: 0, textAlign: 'center', fontFamily: 'Lobster two' }}>Create Account</h1>
+        {errorMessage && <p style={{ color: 'red', marginTop: '10px', textAlign: 'center'}}>{errorMessage}</p>}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
          
           <input type="username" placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)} style={{ borderRadius: 5,fontSize:20, textAlign: 'center', height: 30, width: 250, marginBottom: '10px' }} />

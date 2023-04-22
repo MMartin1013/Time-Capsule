@@ -41,6 +41,7 @@ const splash2 = <div class= "splash-screen2">
 function SplashLoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const navigate = useNavigate();
 
@@ -71,7 +72,7 @@ function SplashLoginPage() {
       .catch((error) => {
       //display error message to user
       console.error('Login failed', error);
-      console.log(error);
+      setErrorMessage("Username Or Password Is Incorrect!")
       });
   };
   
@@ -87,6 +88,7 @@ function SplashLoginPage() {
           <img style={{paddingBottom: 40}}src={logo2} alt="Logo" />
         </div>
         <h1 style={{ textAlign: 'center', fontFamily: 'Lobster two' }}>Log In</h1>
+        {errorMessage && <p style={{ color: 'red', marginTop: '10px', textAlign: 'center'}}>{errorMessage}</p>}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <input type="text" placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)} style={{ borderRadius: 5,fontSize:20, textAlign: 'center', height: 30, width: 250,marginBottom: '10px' }} />
           <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} style={{ borderRadius: 5,fontSize:20, textAlign: 'center', height: 30, width: 250, marginBottom: '10px' }} />
