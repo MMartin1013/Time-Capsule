@@ -17,8 +17,6 @@ const splash1 = <div class= "splash-screen1">
           position: 'absolute',
           backgroundColor: "#8eecec" }}
     >
-    {/* <h1 style={{ paddingTop: 22, paddingLeft: 300,width: 800, fontSize: 80 ,fontWeight: "bold" }}>Time Capsule</h1>
-    <img style={{paddingLeft: 472, paddingBottom: 390}}src={logo1} alt="Logo" /> */}
     <img style={{ paddingBottom: 150}}src={logo1} alt="Logo" />        
   </div>
 </div>
@@ -55,7 +53,7 @@ function LoginPage() {
         console.log('Login successful');
         console.log(JSON.stringify(response.data));
         // redirect user to home page or dashboard on successful login
-        navigate('/home');
+        navigate(`/${username}/home`);
       })
       .catch((error) => {
       //display error message to user
