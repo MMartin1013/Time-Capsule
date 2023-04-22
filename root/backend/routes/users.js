@@ -31,7 +31,7 @@ router.post('/', async (req, res, next) => {
         password: password,
       });
     }catch(e) {
-      res.status(400).send('Could not communicate with database');
+      res.status(400).end('Could not communicate with database');
     }
     
     res.status(200).send('User has been added');
