@@ -56,6 +56,7 @@ export const Messagepage = () => {
     const [date, setDate] = useState(new Date());
     const [time, setTime] = useState(new Date());
     const [open, setOpen] = React.useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
     
@@ -66,6 +67,7 @@ export const Messagepage = () => {
       setOpen(!open);
     };
 
+    
     
   
     const handleMenuSubmit = () => {
@@ -93,7 +95,8 @@ export const Messagepage = () => {
           alert(`It Worked!`);
           })
           .catch((error) => {
-          console.log(error);
+            console.error('Login failed', error);
+            setErrorMessage("Message Failed!")
           });
       };
 
@@ -150,7 +153,7 @@ export const Messagepage = () => {
               <img src={logo} alt="Logo" />
           </div>
           <h1 style={{paddingBottom: 0, textAlign: 'center', fontFamily: 'Lobster two' }}>Create Message</h1>
-          
+          {errorMessage && <p style={{ color: 'red', marginTop: '10px', textAlign: 'center'}}>{errorMessage}</p>}
         <div style={{paddingBottom: 100, display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: "#8eecec" }}>
         
           <textarea type="text" value={message} onChange={(e) => setMessage(e.target.value)} placeholder='Start Typing...'
