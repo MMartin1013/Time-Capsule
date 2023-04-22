@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     element: <SplashLoginpage/>,
   },
   {
-    path: "/home",
+    path: ":username/home",
     element: <Homepage/>,
   },
   {
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
   },
   {
     /* Login page route where we will return login component */
-    path: "/message",
+    path: ":username/message",
     element: <MessagePage/>,
   },
 ]);
