@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import 'react-datetime-picker/dist/DateTimePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import 'react-clock/dist/Clock.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useRoutes } from 'react-router-dom';
 import DateTimePicker from 'react-datetime-picker'
 import Clock from 'react-clock'
 import Splashr from 'splashr'
@@ -58,6 +58,8 @@ export const Messagepage = () => {
     const [open, setOpen] = React.useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
+    const routes = useRoutes();
+    const finalDate = routes.params?.date;
 
     
     
@@ -67,7 +69,8 @@ export const Messagepage = () => {
       setOpen(!open);
     };
 
-    
+    const title = "HI";
+    const date1 = "202304231234";
     
   
     const handleMenuSubmit = () => {
@@ -103,7 +106,7 @@ export const Messagepage = () => {
   
     const handleMenuCalendar = () => {
       // do something
-      setOpen(false);
+      navigate('/calendar')
     };
 
     const handleMenuInbox = () => {
@@ -168,6 +171,10 @@ export const Messagepage = () => {
         fontSize: '20px',
         
        }}  />
+         <p className='text-center'>
+        <span className='bold'>Selected Date:</span>{' '}
+        {finalDate.toDateString()}
+      </p>
         <button onClick={handleOpen} style={{overflowY: 'scroll', fontSize: 15,borderRadius: 5, height: 30, width: 150, fontWeight: 'bold'}}>Select Option </button>
       {open ? (
         <ul className="menu" style={{ overflowY: 'scroll', overflow: 'hidden', cursor: 'pointer', paddingRight: '3%'}}>

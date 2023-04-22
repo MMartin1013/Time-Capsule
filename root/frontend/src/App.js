@@ -4,6 +4,7 @@ import RegisterPage from "./pages/Registerpage";
 import LoginPage from "./pages/Loginpage";
 import MessagePage from "./pages/Messagepage"
 import SplashLoginpage from "./pages/SplashLoginpage"
+import CalendarPage from "./pages/Calendarpage"
 import "./css/App.css";
 
 const router = createBrowserRouter([
@@ -31,6 +32,11 @@ const router = createBrowserRouter([
     /* Login page route where we will return login component */
     path: "/message",
     element: <MessagePage/>,
+  },
+  {
+    /* Login page route where we will return login component */
+    path: "/calendar",
+    element: <CalendarPage/>,
   },
 ]);
 

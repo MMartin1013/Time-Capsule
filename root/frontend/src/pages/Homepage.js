@@ -27,41 +27,7 @@ const splash1 = <div class= "splash-screen1">
 
 
 function HomePage() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-
-  const navigate = useNavigate();
-
-  const handleLogin = () => {
-    // make HTTP request to server to check login credentials
-      const data = JSON.stringify({
-        "username": username,
-        "password": password
-      });
-    
-    const config = {
-      method: 'post',
-      maxBodyLength: Infinity,
-      url: 'http://localhost:3001/users/',
-      headers: {
-      'Content-Type': 'application/json'
-      },
-      data : data
-    };
-
-    axios.request(config)
-      .then((response) => {
-        console.log('Login successful');
-        console.log(JSON.stringify(response.data));
-        // redirect user to home page or dashboard on successful login
-        navigate('/home');
-      })
-      .catch((error) => {
-      //display error message to user
-      console.error('Login failed', error);
-      console.log(error);
-      });
-  };
+  
   
   return (
     <Splashr splash={splash1} transitionTime={100} minDelay={750}>
@@ -88,6 +54,7 @@ function HomePage() {
         
        }} />
         </div>
+
         <p style={{paddingBottom: 55, fontWeight: 'bold', textAlign: 'center', marginTop: '20px' }}>Wanna Create A Message?  <Link to="/message" style={{ fontWeight: 'bold', textDecoration: 'underline', color: 'blue' }}>Create Message</Link></p>
         
       </div>
