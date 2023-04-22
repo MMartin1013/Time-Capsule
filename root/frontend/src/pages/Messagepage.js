@@ -4,12 +4,17 @@ import { Link } from 'react-router-dom';
 import 'react-datetime-picker/dist/DateTimePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import 'react-clock/dist/Clock.css';
+import { useNavigate } from 'react-router-dom';
 import DateTimePicker from 'react-datetime-picker'
 import Clock from 'react-clock'
 import Splashr from 'splashr'
-import logo1 from '../../src/Time-Capsule-Clock-Logo.png';
+//import logo1 from '../../src/Time-Capsule-Clock-Logo.png';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
+import SplitButton from 'react-bootstrap/SplitButton'
+import logo1 from '../../src/Time-Capsule-Gif.gif';
+import axios from 'axios';
+
 
 
 
@@ -23,19 +28,83 @@ const splash1 = <div class= "splash-screen1">
           position: 'absolute',
           backgroundColor: "#8eecec" }}
     >
-    <h1 style={{paddingTop: 22, paddingLeft: 300, justifyContent: 'center', width: 800, fontSize: 80 ,fontWeight: "bold" }}>Time Capsule</h1>
-    <img style={{paddingLeft: 472, paddingBottom: 390}}src={logo1} alt="Logo" />
-            
+    {/* <h1 style={{paddingTop: 22, paddingLeft: 300, justifyContent: 'center', width: 800, fontSize: 80 ,fontWeight: "bold" }}>Time Capsule</h1> */}
+    {/* <img style={{paddingLeft: 472, paddingBottom: 390}}src={logo1} alt="Logo" /> */}
+    <img style={{ paddingBottom: 150}}src={logo1} alt="Logo" />        
   </div>
 </div>
 
+// function DropDownMenu() {
+//   return (
+//     <DropdownButton
+//       align="end"
+//       title="Dropdown end"
+//       id="dropdown-menu-align-end"
+//     >
+//       <Dropdown.Item eventKey="1">Action</Dropdown.Item>
+//       <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
+//       <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
+//       <Dropdown.Divider />
+//       <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
+//     </DropdownButton>
+//   );
+// };
+
 export const Homepage = () => {
 
-    const [userMessage, setUserMessage] = useState('');
+    const [message, setMessage] = useState('');
     const [date, setDate] = useState(new Date());
     const [time, setTime] = useState(new Date());
+    const [open, setOpen] = React.useState(false);
+    const navigate = useNavigate();
     
     //const dateInputRef = useRef(null);
+
+    const handleOpen = () => {
+      setOpen(!open);
+    };
+  
+    const handleMenuSubmit = () => {
+      // do something
+      setMessage(message.target.value);
+      const message = JSON.stringify({
+        "message": message, 
+      });
+      const config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'http://localhost:3001/users/',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        message : message
+      };
+  
+      axios.request(config)
+        .then((response) => {
+        console.log(JSON.stringify(response.message));
+        alert(`Message Saved For Redelivery On : `);
+        })
+        .catch((error) => {
+        console.log(error);
+        });
+    };
+
+  
+    const handleMenuCalendar = () => {
+      // do something
+      setOpen(false);
+    };
+
+    const handleMenuInbox = () => {
+      // do something
+      navigate('/home')
+    };
+    const handleMenuLogout = () => {
+      // do something
+      navigate('/login');
+    };
+  
 
     const handleDateChange = (date) => {
         setDate(date.value)
@@ -44,14 +113,17 @@ export const Homepage = () => {
 
         );
     };
+
+    const handleTextChange = () => {
+
+      return
+    }
       
     // const handleDateChange = (e) => {
     //   setDate(date);
     // };
 
-    const handleTextChange = (e) => {
-      setUserMessage(e.target.value);
-    };
+    
 
     useEffect(() => {
       const interval = setInterval(() => setTime(new Date()), 1000);
@@ -63,23 +135,19 @@ export const Homepage = () => {
       
 
     return (
-      <Splashr splash={splash1} transitionTime={1000} minDelay={500}>
+      <Splashr splash={splash1} transitionTime={100} minDelay={750}>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: "#8eecec" }}>
-        <div style={{ alignItems: 'center' }}>
-        <h1 style={{paddingTop: 70, justifyContent: 'center', paddingLeft: 300,width: 800, fontSize: 80 ,fontWeight: "bold" }}>Time Capsule</h1>
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '20px' }}>
+        <div style={{width: '100%', alignItems: 'center', backgroundColor: "#8eecec" }}>
+        <h1 style={{paddingTop: 68, justifyContent: 'center', paddingLeft: 452,width: 800, fontSize: 80 ,fontWeight: "bold", backgroundColor: "#8eecec" }}>Time Capsule</h1>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: "#8eecec"}}>
               <img src={logo} alt="Logo" />
           </div>
           <h1 style={{paddingBottom: 0, textAlign: 'center', fontFamily: 'Lobster two' }}>Create Message</h1>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <DropdownButton id="dropdown-item-button" title="Select an Option">
-      <Dropdown.ItemText>Submit Message</Dropdown.ItemText>
-      <Dropdown.Item as="button">Inbox</Dropdown.Item>
-      <Dropdown.Item as="button">Calendar</Dropdown.Item>
-      <Dropdown.Item as="button">Log Out</Dropdown.Item>
-    </DropdownButton>
-          <textarea type="text" value={userMessage} onChange={handleTextChange} placeholder='Start Typing...'
-                  placeholderTextColor="#aaaaaa" rows="25" style={{ marginBottom: '10px' ,height: 200, width: 400,
+          
+        <div style={{paddingBottom: 100, display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: "#8eecec" }}>
+        
+          <textarea type="text" value={message} onChange={handleTextChange} placeholder='Start Typing...'
+                   placeholderTextColor="#aaaaaa" rows="25" style={{ marginBottom: '10px' ,height: 200, width: 400,
         borderRadius: 5,
         overflow: 'hidden',
         backgroundColor: 'white',
@@ -90,7 +158,25 @@ export const Homepage = () => {
         fontSize: '20px',
         
        }} />
+        <button onClick={handleOpen} style={{overflowY: 'scroll', fontSize: 15,borderRadius: 5, height: 30, width: 150, fontWeight: 'bold'}}>Select Option </button>
+      {open ? (
+        <ul className="menu" style={{ overflowY: 'scroll', overflow: 'hidden', cursor: 'pointer', paddingRight: '3%'}}>
+          <li className="menu-Submit">
+            <button value={message} onClick={handleMenuSubmit} style={{fontSize: 15,borderRadius: 5, height: 30, width: 150, fontWeight: 'bold', display: 'block'}}>Submit Message</button>
+          </li>
+          <li className="menu-Calendar">
+            <button onClick={handleMenuCalendar} style={{fontSize: 15,borderRadius: 5, height: 30, width: 150, fontWeight: 'bold', display: 'block' }}>Calendar</button>
+          </li>
+          <li className="menu-Inbox">
+            <button onClick={handleMenuInbox} style={{fontSize: 15,borderRadius: 5, height: 30, width: 150, fontWeight: 'bold', display: 'block' }}>Inbox</button>
+          </li>
+          <li className="menu-Logout">
+            <button onClick={handleMenuLogout} style={{fontSize: 15,borderRadius: 5, height: 30, width: 150, fontWeight: 'bold', display: 'block',color: 'red'}}>Logout</button>
+          </li>
+        </ul>
+      ) : null}
         </div>
+       
       </div>
     </div>
     </Splashr>

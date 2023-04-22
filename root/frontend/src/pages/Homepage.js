@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import logo1 from '../../src/Time-Capsule-Clock-Logo.png';
+//import logo1 from '../../src/Time-Capsule-Clock-Logo.png';
 import logo2 from '../../src/logoTC.png'
 import axios from 'axios';
-import Splashr from 'splashr'
+import Splashr from 'splashr';
+import logo1 from '../../src/Time-Capsule-Gif.gif';
 
 const splash1 = <div class= "splash-screen1">
   <div className = 'Logo' 
@@ -16,8 +17,9 @@ const splash1 = <div class= "splash-screen1">
           position: 'absolute',
           backgroundColor: "#8eecec" }}
     >
-    <h1 style={{ paddingTop: 22, paddingLeft: 300,width: 800, fontSize: 80 ,fontWeight: "bold" }}>Time Capsule</h1>
-    <img style={{paddingLeft: 472, paddingBottom: 390}}src={logo1} alt="Logo" />
+    {/* <h1 style={{ paddingTop: 22, paddingLeft: 300,width: 800, fontSize: 80 ,fontWeight: "bold" }}>Time Capsule</h1>
+    <img style={{paddingLeft: 472, paddingBottom: 390}}src={logo1} alt="Logo" /> */}
+    <img style={{ paddingBottom: 150}}src={logo1} alt="Logo" /> 
             
   </div>
 </div>
@@ -62,12 +64,12 @@ function LoginPage() {
   };
   
   return (
-    <Splashr splash={splash1} transitionTime={1000} minDelay={500}>
+    <Splashr splash={splash1} transitionTime={100} minDelay={750}>
       
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh',  backgroundColor: "#8eecec" }}>
-      <div style={{ alignItems: 'center' }}>
-      <h1 style={{ paddingLeft: 300,width: 800, fontSize: 80 ,fontWeight: "bold" }}>Time Capsule</h1>
-        <div className = 'Logo' style={{ zIndex: 5, display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '20px' }}>
+      <div style={{ width: '100%', alignItems: 'center', backgroundColor: "#8eecec" }}>
+      <h1 style={{ paddingLeft: '32.2%',width: 800, fontSize: 80 ,fontWeight: "bold", paddingTop: '6%'}}>Time Capsule</h1>
+        <div className = 'Logo' style={{ zIndex: 5, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <img style={{paddingBottom: 40}}src={logo2} alt="Logo" />
         </div>
         <h1 style={{ textAlign: 'center', fontFamily: 'Lobster two' }}>Message Inbox</h1>

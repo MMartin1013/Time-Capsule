@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import logo from '../../src/logoTC.png';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import logo1 from '../../src/Time-Capsule-Clock-Logo.png';
-import Splashr from 'splashr'
+//import logo1 from '../../src/Time-Capsule-Clock-Logo.png';
+import Splashr from 'splashr';
+import logo1 from '../../src/Time-Capsule-Gif.gif';
 
 
 const splash1 = <div class= "splash-screen1">
@@ -17,9 +18,9 @@ const splash1 = <div class= "splash-screen1">
           position: 'absolute',
           backgroundColor: "#8eecec" }}
     >
-    <h1 style={{paddingTop: 22, paddingLeft: 300, justifyContent: 'center', width: 800, fontSize: 80 ,fontWeight: "bold" }}>Time Capsule</h1>
-    <img style={{paddingLeft: 472, paddingBottom: 390}}src={logo1} alt="Logo" />
-            
+    {/* <h1 style={{paddingTop: 22, paddingLeft: 300, justifyContent: 'center', width: 800, fontSize: 80 ,fontWeight: "bold" }}>Time Capsule</h1>
+    <img style={{paddingLeft: 472, paddingBottom: 390}}src={logo1} alt="Logo" /> */}
+    <img style={{ paddingBottom: 150}}src={logo1} alt="Logo" />       
   </div>
 </div>
 
@@ -96,7 +97,7 @@ function RegisterPage() {
   };
 
   return (
-    <Splashr splash={splash1} transitionTime={1000} minDelay={500}>
+    <Splashr splash={splash1} transitionTime={100} minDelay={750}>
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: "#8eecec" }}>
       <div style={{ alignItems: 'center' }}>
       <h1 style={{justifyContent: 'center', paddingLeft: 300,width: 800, fontSize: 80 ,fontWeight: "bold" }}>Time Capsule</h1>
