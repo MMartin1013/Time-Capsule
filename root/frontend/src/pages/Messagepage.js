@@ -57,6 +57,8 @@ export const Messagepage = () => {
     const [time, setTime] = useState(new Date());
     const [open, setOpen] = React.useState(false);
     const navigate = useNavigate();
+
+    
     
     //const dateInputRef = useRef(null);
 
@@ -70,7 +72,9 @@ export const Messagepage = () => {
       // make HTTP request to server to check login credentials
         
         const data = JSON.stringify({
-          "message": message,
+          //"title": title,
+          //"date": date,
+          "text": message,
         });
     
         const config = {
