@@ -33,19 +33,20 @@ function LoginPage() {
 
   const handleLogin = () => {
     // make HTTP request to server to check login credentials
-      const data = JSON.stringify({
-        "username": username,
-        "password": password
-      });
+    
+    const data = {
+        username: username,
+        password: password
+      };
     
     const config = {
-      method: 'post',
+      method: 'get',
       maxBodyLength: Infinity,
       url: 'http://localhost:3001/users/',
       headers: {
       'Content-Type': 'application/json'
       },
-      data : data
+      params : data
     };
 
     axios.request(config)
@@ -60,6 +61,7 @@ function LoginPage() {
       console.error('Login failed', error);
       console.log(error);
       });
+      
   };
   
   return (
