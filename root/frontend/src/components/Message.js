@@ -1,12 +1,15 @@
 import React from 'react';
+import swal from 'sweetalert';
 
 
 export function Message(props) {
     const {text, title} = props;
 
     const handleClick = () => {
-
-    }
+        swal({
+            title: title,
+            text: text})
+        }
 
     return(
         <div className="Message" style={{display: 'flex', alignItems: 'center', flexDirection: 'column', height: '50px' ,margin: '20px'}}>
