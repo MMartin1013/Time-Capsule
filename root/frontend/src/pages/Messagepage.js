@@ -36,7 +36,7 @@ const splash1 = <div class= "splash-screen1">
 
 export const Messagepage = () => {
 
-    const [message, setMessage] = useState({message: ''});
+    const [message, setMessage] = useState('');
     const [date, setDate] = useState(new Date());
     const [time, setTime] = useState(new Date());
     const [open, setOpen] = React.useState(false);
@@ -50,9 +50,6 @@ export const Messagepage = () => {
     const handleOpen = () => {
       setOpen(!open);
     };
-
-    //const title = "HI";
-    //const date1 = "202304231234";
     
   
     const handleMenuSubmit = () => {
@@ -105,7 +102,7 @@ export const Messagepage = () => {
     };
 
     const handleChange = (e) => {
-        setMessage({[e.target.name]: e.target.value});
+        setMessage(e.target.value);
         
     };
       
