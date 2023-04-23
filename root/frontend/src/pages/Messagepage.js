@@ -56,15 +56,15 @@ export const Messagepage = () => {
       // make HTTP request to server to check login credentials
         
         const data = JSON.stringify({
-          //"title": title,
-          //"date": date,
-          "text": message,
+          title: null,
+          deliver_date: date.valueOf(),
+          text: message,
         });
     
         const config = {
           method: 'post',
           maxBodyLength: Infinity,
-          url: 'http://localhost:3001/users/',
+          url: `http://localhost:3001/messages/${username}`,
           headers: {
           'Content-Type': 'application/json'
           },
@@ -77,8 +77,8 @@ export const Messagepage = () => {
           alert(`It Worked!`);
           })
           .catch((error) => {
-            console.error('Login failed', error);
-            setErrorMessage("Message Failed!")
+            console.log(error);
+            setErrorMessage("Message Failed!");
           });
       };
 
@@ -91,24 +91,7 @@ export const Messagepage = () => {
       // do something
       navigate('/login');
     };
-  
-
-    const handleDateChange = (date) => {
-        setDate(date.value)
-        return (
-          alert('New date is: ', date)
-
-        );
-    };
-
-    const handleChange = (e) => {
-        setMessage(e.target.value);
-        
-    };
       
-    // const handleDateChange = (e) => {
-    //   setDate(date);
-    // };
 
     
 
