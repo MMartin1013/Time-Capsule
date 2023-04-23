@@ -1,17 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import logo from '../../src/logoTC.png';
-import { Link } from 'react-router-dom';
 import 'react-datetime-picker/dist/DateTimePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import 'react-clock/dist/Clock.css';
 import { useNavigate, useParams } from 'react-router-dom';
-import DateTimePicker from 'react-datetime-picker'
-import Clock from 'react-clock'
 import Splashr from 'splashr'
-//import logo1 from '../../src/Time-Capsule-Clock-Logo.png';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import SplitButton from 'react-bootstrap/SplitButton'
 import logo1 from '../../src/Time-Capsule-Gif.gif';
 import axios from 'axios';
 import Calendar from 'react-calendar';
@@ -38,7 +31,6 @@ export const Messagepage = () => {
 
     const [message, setMessage] = useState('');
     const [date, setDate] = useState(new Date());
-    const [time, setTime] = useState(new Date());
     const [open, setOpen] = React.useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
@@ -84,24 +76,11 @@ export const Messagepage = () => {
 
 
     const handleMenuInbox = () => {
-      // do something
       navigate(`/${username}/home`)
     };
     const handleMenuLogout = () => {
-      // do something
       navigate('/login');
     };
-      
-
-    
-
-    useEffect(() => {
-      const interval = setInterval(() => setTime(new Date()), 1000);
-  
-      return () => {
-        clearInterval(interval);
-      };
-    }, []);
       
 
     return (
