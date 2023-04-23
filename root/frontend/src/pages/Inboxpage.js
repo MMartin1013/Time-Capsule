@@ -52,6 +52,7 @@ function InboxPage() {
   };
 
   useEffect(() => {
+    requestMessages();
     const intervalId = setInterval(() => {  //assign interval to a variable to clear it.
       requestMessages();
     }, 10000)
@@ -70,10 +71,10 @@ function InboxPage() {
           <img style={{paddingBottom: 40}}src={logo2} alt="Logo" />
         </div>
         <h1 style={{ textAlign: 'center', fontFamily: 'Lobster two' }}>Message Inbox</h1>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around' }}>
         {messages && messages.map(message => 
               <Message title={message.title} text={message.text}/>
-        )}
+              )}
         </div>
         <p style={{paddingBottom: 55, fontWeight: 'bold', textAlign: 'center', marginTop: '20px' }}>Wanna Create A Message?  <Link to={`/${username}/message`} style={{ fontWeight: 'bold', textDecoration: 'underline', color: 'blue' }}>Create Message</Link></p>
         
