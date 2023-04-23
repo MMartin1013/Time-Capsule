@@ -30,6 +30,7 @@ const splash1 = <div class= "splash-screen1">
 export const Messagepage = () => {
 
     const [message, setMessage] = useState('');
+    const [title, setTitle] = useState(null);
     const [date, setDate] = useState(new Date());
     const [open, setOpen] = React.useState(false);
     const [errorMessage, setErrorMessage] = useState('');
@@ -48,7 +49,7 @@ export const Messagepage = () => {
       // make HTTP request to server to check login credentials
         
         const data = JSON.stringify({
-          title: null,
+          title: title,
           deliver_date: date.valueOf(),
           text: message,
         });
@@ -94,14 +95,20 @@ export const Messagepage = () => {
           <h1 style={{paddingBottom: 0, textAlign: 'center', fontFamily: 'Lobster two' }}>Create Message</h1>
           {errorMessage && <p style={{ color: 'red', marginTop: '10px', textAlign: 'center'}}>{errorMessage}</p>}
         <div style={{paddingBottom: 50, display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: "#8eecec" }}>
-        
+        <h3 style={{paddingBottom: 0, textAlign: 'center', fontFamily: 'Lobster two' }}>Message Title</h3>
+        <textarea type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder='(Optional)'
+                   placeholderTextColor="#aaaaaa" style={{ marginBottom: '10px', borderRadius: 5, overflow: 'hidden', backgroundColor: 'white',
+                   marginLeft: 30,
+                   marginRight: 30,
+                   fontSize: '20px',
+                   
+                  }}  />
+          <h3 style={{paddingBottom: 0, textAlign: 'center', fontFamily: 'Lobster two' }}>Message Text</h3>
           <textarea type="text" value={message} onChange={(e) => setMessage(e.target.value)} placeholder='Start Typing...'
                    placeholderTextColor="#aaaaaa" rows="25" style={{ marginBottom: '10px' ,height: 200, width: 400,
         borderRadius: 5,
         overflow: 'hidden',
         backgroundColor: 'white',
-        marginTop: 15,
-        marginBottom: 5,
         marginLeft: 30,
         marginRight: 30,
         fontSize: '20px',
