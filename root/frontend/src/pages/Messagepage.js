@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import 'react-datetime-picker/dist/DateTimePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import 'react-clock/dist/Clock.css';
-import { useNavigate, useRoutes } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import DateTimePicker from 'react-datetime-picker'
 import Clock from 'react-clock'
 import Splashr from 'splashr'
@@ -14,6 +14,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import SplitButton from 'react-bootstrap/SplitButton'
 import logo1 from '../../src/Time-Capsule-Gif.gif';
 import axios from 'axios';
+import Calendar from 'react-calendar';
 
 
 
@@ -28,27 +29,10 @@ const splash1 = <div class= "splash-screen1">
           position: 'absolute',
           backgroundColor: "#8eecec" }}
     >
-    {/* <h1 style={{paddingTop: 22, paddingLeft: 300, justifyContent: 'center', width: 800, fontSize: 80 ,fontWeight: "bold" }}>Time Capsule</h1> */}
-    {/* <img style={{paddingLeft: 472, paddingBottom: 390}}src={logo1} alt="Logo" /> */}
     <img style={{ paddingBottom: 150}}src={logo1} alt="Logo" />        
   </div>
 </div>
 
-// function DropDownMenu() {
-//   return (
-//     <DropdownButton
-//       align="end"
-//       title="Dropdown end"
-//       id="dropdown-menu-align-end"
-//     >
-//       <Dropdown.Item eventKey="1">Action</Dropdown.Item>
-//       <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
-//       <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
-//       <Dropdown.Divider />
-//       <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
-//     </DropdownButton>
-//   );
-// };
 
 export const Messagepage = () => {
 
@@ -58,19 +42,17 @@ export const Messagepage = () => {
     const [open, setOpen] = React.useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
-    const routes = useRoutes();
-    const finalDate = routes.params?.date;
+    const {username} = useParams();
+    
+    
 
-    
-    
-    //const dateInputRef = useRef(null);
 
     const handleOpen = () => {
       setOpen(!open);
     };
 
-    const title = "HI";
-    const date1 = "202304231234";
+    //const title = "HI";
+    //const date1 = "202304231234";
     
   
     const handleMenuSubmit = () => {
@@ -103,15 +85,10 @@ export const Messagepage = () => {
           });
       };
 
-  
-    const handleMenuCalendar = () => {
-      // do something
-      navigate('/calendar')
-    };
 
     const handleMenuInbox = () => {
       // do something
-      navigate('/home')
+      navigate(`/${username}/home`)
     };
     const handleMenuLogout = () => {
       // do something
@@ -149,7 +126,7 @@ export const Messagepage = () => {
 
     return (
       <Splashr splash={splash1} transitionTime={100} minDelay={750}>
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: "#8eecec" }}>
+      <div style={{paddingTop:'13%', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: "#8eecec" }}>
         <div style={{width: '100%', alignItems: 'center', backgroundColor: "#8eecec" }}>
         <h1 style={{paddingTop: 68, justifyContent: 'center', paddingLeft: 452,width: 800, fontSize: 80 ,fontWeight: "bold", backgroundColor: "#8eecec" }}>Time Capsule</h1>
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: "#8eecec"}}>
@@ -157,7 +134,7 @@ export const Messagepage = () => {
           </div>
           <h1 style={{paddingBottom: 0, textAlign: 'center', fontFamily: 'Lobster two' }}>Create Message</h1>
           {errorMessage && <p style={{ color: 'red', marginTop: '10px', textAlign: 'center'}}>{errorMessage}</p>}
-        <div style={{paddingBottom: 100, display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: "#8eecec" }}>
+        <div style={{paddingBottom: 50, display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: "#8eecec" }}>
         
           <textarea type="text" value={message} onChange={(e) => setMessage(e.target.value)} placeholder='Start Typing...'
                    placeholderTextColor="#aaaaaa" rows="25" style={{ marginBottom: '10px' ,height: 200, width: 400,
@@ -171,18 +148,22 @@ export const Messagepage = () => {
         fontSize: '20px',
         
        }}  />
-         <p className='text-center'>
-        <span className='bold'>Selected Date:</span>{' '}
-        {finalDate.toDateString()}
-      </p>
+       <h1 style={{ textAlign: 'center', fontFamily: 'Lobster two' }}>Calendar</h1>
+       
+       <div className='app' style={{ display:'flex', flexDirection: 'column', alignContent:'center', alignItems:'center'}}>
+     <div className='calendar-container' style={{alignContent:'center', alignItems:'center'}}>
+       <Calendar onChange={setDate} value={date} />
+     </div>
+     <p className='text-center'>
+       <span className='bold'>Selected Date:</span>{' '}
+       {date.toDateString()}
+     </p>
+   </div>
         <button onClick={handleOpen} style={{overflowY: 'scroll', fontSize: 15,borderRadius: 5, height: 30, width: 150, fontWeight: 'bold'}}>Select Option </button>
       {open ? (
         <ul className="menu" style={{ overflowY: 'scroll', overflow: 'hidden', cursor: 'pointer', paddingRight: '3%'}}>
           <li className="menu-Submit">
             <button onClick={handleMenuSubmit} style={{fontSize: 15,borderRadius: 5, height: 30, width: 150, fontWeight: 'bold', display: 'block'}}>Submit Message</button>
-          </li>
-          <li className="menu-Calendar">
-            <button onClick={handleMenuCalendar} style={{fontSize: 15,borderRadius: 5, height: 30, width: 150, fontWeight: 'bold', display: 'block' }}>Calendar</button>
           </li>
           <li className="menu-Inbox">
             <button onClick={handleMenuInbox} style={{fontSize: 15,borderRadius: 5, height: 30, width: 150, fontWeight: 'bold', display: 'block' }}>Inbox</button>
@@ -193,7 +174,6 @@ export const Messagepage = () => {
         </ul>
       ) : null}
         </div>
-       
       </div>
     </div>
     </Splashr>
