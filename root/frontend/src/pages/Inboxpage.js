@@ -59,7 +59,7 @@ function InboxPage() {
   
     return () => clearInterval(intervalId); //This is important
    
-  }, [])
+  },[])
   
   return (
     <Splashr splash={splash1} transitionTime={100} minDelay={750}>
@@ -75,6 +75,8 @@ function InboxPage() {
         {messages && messages.map(message => 
               <Message title={message.title} text={message.text}/>
               )}
+        {messages.length === 0 && 
+        <h3 style={{ textAlign: 'center', fontFamily: 'Lobster two' }}>You have no messages :(</h3>}
         </div>
         <p style={{paddingBottom: 55, fontWeight: 'bold', textAlign: 'center', marginTop: '20px' }}>Wanna Create A Message?  <Link to={`/${username}/message`} style={{ fontWeight: 'bold', textDecoration: 'underline', color: 'blue' }}>Create Message</Link></p>
         
