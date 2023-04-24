@@ -69,6 +69,8 @@ export const Messagepage = () => {
           .then((response) => {
           console.log(JSON.stringify(response.data));
           setErrorMessage("");
+          setMessage("");
+          setTitle("");
           swal(`Message sent!`);
           })
           .catch((error) => {
