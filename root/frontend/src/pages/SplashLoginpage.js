@@ -66,8 +66,8 @@ function SplashLoginPage() {
       .then((response) => {
         console.log('Login successful');
         console.log(JSON.stringify(response.data));
-        // redirect user to home page or dashboard on successful login
-        navigate(`${username}/home`);
+        // redirect user to inbox
+        navigate(`${username}/inbox`);
       })
       .catch((error) => {
       //display error message to user

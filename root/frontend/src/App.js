@@ -9,12 +9,12 @@ import "./css/App.css";
 const router = createBrowserRouter([
   
   {
-    /* Home page route where we will return hompage component */
+    /* Home page route where we will return a special login page */
     path: "/",
     element: <SplashLoginpage/>,
   },
   {
-    path: ":username/home",
+    path: ":username/inbox",
     element: <Inboxpage/>,
   },
   {

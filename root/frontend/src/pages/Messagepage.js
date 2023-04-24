@@ -81,7 +81,7 @@ export const Messagepage = () => {
 
 
     const handleMenuInbox = () => {
-      navigate(`/${username}/home`)
+      navigate(`/${username}/inbox`)
     };
     const handleMenuLogout = () => {
       navigate('/login');
