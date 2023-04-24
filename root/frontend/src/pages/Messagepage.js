@@ -118,7 +118,7 @@ export const Messagepage = () => {
         fontSize: '20px',
         
        }}  />
-       <h1 style={{ textAlign: 'center', fontFamily: 'Lobster two' }}>Calendar</h1>
+       <h3 style={{ textAlign: 'center', fontFamily: 'Lobster two' }}>Choose the delivery date for your message!</h3>
        
        <div className='app' style={{ display:'flex', flexDirection: 'column', alignContent:'center', alignItems:'center'}}>
      <div className='calendar-container' style={{alignContent:'center', alignItems:'center'}}>
