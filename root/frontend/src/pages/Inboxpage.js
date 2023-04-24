@@ -64,7 +64,7 @@ function InboxPage() {
   return (
     <Splashr splash={splash1} transitionTime={100} minDelay={750}>
       
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh',  backgroundColor: "#8eecec" }}>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: "#8eecec" }}>
       <div style={{ width: '100%', alignItems: 'center', backgroundColor: "#8eecec" }}>
       <h1 style={{ paddingLeft: '32.2%',width: 800, fontSize: 80 ,fontWeight: "bold", paddingTop: '6%'}}>Time Capsule</h1>
         <div className = 'Logo' style={{ zIndex: 5, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
