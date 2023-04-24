@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-//import logo1 from '../../src/Time-Capsule-Clock-Logo.png';
 import logo2 from '../../src/logoTC.png'
 import axios from 'axios';
 import Splashr from 'splashr'
