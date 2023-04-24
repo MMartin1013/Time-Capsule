@@ -5,11 +5,40 @@ import swal from 'sweetalert';
 export function Message(props) {
     const {text, title} = props;
 
-    const handleClick = () => {
-        swal({
+    const handleClick = async () => {
+        const messagePopup = await swal({
             title: title,
-            text: text})
+            text: text,
+            buttons: {
+                buttonOne: {
+                    text: "Close",
+                    closeModal: true
+                },
+                buttonTwo: {
+                    text: "Download!",
+                    value: "download"
+                }
+            }
+        });
+
+        if(messagePopup === "download") {
+            downloadMessage();
         }
+    }
+
+    const downloadMessage = () => {
+        const element = document.createElement('a');
+        const message = `${(title || title === "") ? title : "This message has no title"}\n${text}`
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(message));
+        element.setAttribute('download', `${title}.txt`);
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+    }
 
     return(
         <div className="Message" style={{display: 'flex', alignItems: 'center', flexDirection: 'column', height: '50px' ,margin: '20px'}}>
