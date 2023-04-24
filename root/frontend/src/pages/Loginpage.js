@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-//import logo1 from '../../src/Time-Capsule-Clock-Logo.png';
 import logo2 from '../../src/logoTC.png'
 import axios from 'axios';
 import Splashr from 'splashr'
@@ -52,8 +51,8 @@ function LoginPage() {
       .then((response) => {
         console.log('Login successful');
         console.log(JSON.stringify(response.data));
-        // redirect user to home page or dashboard on successful login
-        navigate(`/${username}/home`);
+        // redirect user to inbox
+        navigate(`/${username}/inbox`);
       })
       .catch((error) => {
       //display error message to user

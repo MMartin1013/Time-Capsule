@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import logo from '../../src/logoTC.png';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-//import logo1 from '../../src/Time-Capsule-Clock-Logo.png';
 import Splashr from 'splashr';
 import logo1 from '../../src/Time-Capsule-Gif.gif';
 
@@ -18,8 +17,6 @@ const splash1 = <div class= "splash-screen1">
           position: 'absolute',
           backgroundColor: "#8eecec" }}
     >
-    {/* <h1 style={{paddingTop: 22, paddingLeft: 300, justifyContent: 'center', width: 800, fontSize: 80 ,fontWeight: "bold" }}>Time Capsule</h1>
-    <img style={{paddingLeft: 472, paddingBottom: 390}}src={logo1} alt="Logo" /> */}
     <img style={{ paddingBottom: 150}}src={logo1} alt="Logo" />       
   </div>
 </div>
@@ -54,17 +51,6 @@ function RegisterPage() {
 
   const handleRegister = () => {
     // handle register logic here
-    // console.log(`Registering with username: ${username} and password: ${password}`);
-    // axios.post(`http://localhost:3001/users/${username}/${password}`)
-    //   .then(response => {
-    //     console.log('Registration successful:', response.data);
-    //     // redirect to the login page or show a success message
-    //     navigate('/login');
-    //   })
-    //   .catch(error => {
-    //     console.error('Registration failed:', error);
-    //     // show an error message to the user
-    //   });
 
     if (password !== confirmPassword) {
       alert(`                                          **  ERROR  **

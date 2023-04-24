@@ -81,7 +81,7 @@ export const Messagepage = () => {
 
 
     const handleMenuInbox = () => {
-      navigate(`/${username}/home`)
+      navigate(`/${username}/inbox`)
     };
     const handleMenuLogout = () => {
       navigate('/login');
@@ -90,7 +90,7 @@ export const Messagepage = () => {
 
     return (
       <Splashr splash={splash1} transitionTime={100} minDelay={750}>
-      <div style={{paddingTop:'13%', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: "#8eecec" }}>
+      <div style={{paddingTop:'13%', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: "#8eecec" }}>
         <div style={{width: '100%', alignItems: 'center', backgroundColor: "#8eecec" }}>
         <h1 style={{paddingTop: 68, justifyContent: 'center', paddingLeft: 452,width: 800, fontSize: 80 ,fontWeight: "bold", backgroundColor: "#8eecec" }}>Time Capsule</h1>
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: "#8eecec"}}>
@@ -118,7 +118,7 @@ export const Messagepage = () => {
         fontSize: '20px',
         
        }}  />
-       <h1 style={{ textAlign: 'center', fontFamily: 'Lobster two' }}>Calendar</h1>
+       <h3 style={{ textAlign: 'center', fontFamily: 'Lobster two' }}>Choose the delivery date for your message!</h3>
        
        <div className='app' style={{ display:'flex', flexDirection: 'column', alignContent:'center', alignItems:'center'}}>
      <div className='calendar-container' style={{alignContent:'center', alignItems:'center'}}>
