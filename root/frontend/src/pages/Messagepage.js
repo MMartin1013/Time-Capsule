@@ -8,6 +8,7 @@ import Splashr from 'splashr'
 import logo1 from '../../src/Time-Capsule-Gif.gif';
 import axios from 'axios';
 import Calendar from 'react-calendar';
+import swal from 'sweetalert';
 
 
 
@@ -47,10 +48,10 @@ export const Messagepage = () => {
   
     const handleMenuSubmit = () => {
       // make HTTP request to server to check login credentials
-        
+
         const data = JSON.stringify({
           title: title,
-          deliver_date: date.valueOf(),
+          date: date.valueOf(),
           text: message,
         });
     
@@ -67,7 +68,8 @@ export const Messagepage = () => {
         axios.request(config)
           .then((response) => {
           console.log(JSON.stringify(response.data));
-          alert(`It Worked!`);
+          setErrorMessage("");
+          swal(`Message sent!`);
           })
           .catch((error) => {
             console.log(error);
